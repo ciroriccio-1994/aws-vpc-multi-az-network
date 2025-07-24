@@ -31,7 +31,7 @@ The goal: show hands-on understanding of **networking fundamentals** (VPC, subne
 
 ## 🖼️ Architecture Screenshot
 
-![VPC Architecture](./vpc-project-screenshot.png)
+![VPC Architecture](./vpc-project-screenshot.PNG)
 
 ---
 
@@ -52,4 +52,3 @@ This project is part of my **AWS Cloud portfolio**: a series of small, real-worl
 I deleted the environment after testing to **avoid extra AWS charges**, keeping the focus on learning and documentation.
 
 Follow my AWS journey on [LinkedIn](https://www.linkedin.com/in/ciro-riccio-a1a933197/).
-![VPC Architecture](./vpc-project-screenshot.png)
