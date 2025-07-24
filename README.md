@@ -1,54 +1,47 @@
-# 🧱 AWS VPC Project – Multi-AZ with Public & Private Subnets
+# AWS VPC Project – Multi-AZ with Public & Private Subnets
 
-This project demonstrates how I designed and built a **custom VPC architecture on AWS**, manually via the AWS Management Console, as part of my **AWS Solutions Architect Associate** preparation.
+This is a small hands-on project I built while preparing for the **AWS Solutions Architect Associate** exam.
 
-The goal: show hands-on understanding of **networking fundamentals** (VPC, subnets, routing, NAT, IGW) while keeping the setup simple, cost-controlled, and easy to reproduce.
-
----
-
-## 🔧 What I Built
-
-- **Custom VPC**: 10.0.0.0/16
-- **2 Availability Zones**: eu-central-1a, eu-central-1b
-- **4 Subnets**:  
-  - Public: `10.0.0.0/20` (AZ a) and `10.0.16.0/20` (AZ b)  
-  - Private: `10.0.32.0/20` (AZ a) and `10.0.48.0/20` (AZ b)
-- **Internet Gateway (IGW)**: Public subnets route traffic to the Internet.
-- **NAT Gateway**: Deployed in a public subnet (with Elastic IP) to allow secure outbound traffic from private subnets.
-- **Route Tables**:  
-  - Public route table → `0.0.0.0/0 → IGW`
-  - Two private route tables (one per AZ) → `0.0.0.0/0 → NAT`
+I wanted to move beyond theory and actually create a **custom network architecture** on AWS, so I set up a VPC with **public and private subnets across two Availability Zones**, routing, a NAT Gateway, and an Internet Gateway — all built manually in the AWS Console.
 
 ---
 
-## 📐 Architecture Overview
+## What I Built
 
-- Public subnets can host internet-facing resources (e.g., load balancers, bastion hosts).  
-- Private subnets can host backend resources (databases, app servers) with secure outbound internet access via NAT.  
-- Dedicated route tables ensure **isolation and controlled traffic flow**.
+- **Custom VPC**: 10.0.0.0/16  
+- **2 Availability Zones**: eu-central-1a, eu-central-1b  
+- **4 Subnets** (two public, two private):  
+  - Public: 10.0.0.0/20 (AZ a) and 10.0.16.0/20 (AZ b)  
+  - Private: 10.0.32.0/20 (AZ a) and 10.0.48.0/20 (AZ b)  
+- **Internet Gateway (IGW)** for public subnets  
+- **NAT Gateway** in one public subnet (with Elastic IP) for outbound internet access from private subnets  
+- **Route Tables** configured so:  
+  - Public subnets route to IGW  
+  - Private subnets route to NAT  
 
 ---
 
-## 🖼️ Architecture Screenshot
+## Why I Built It
+
+I’m using these mini-projects to **practice core AWS concepts** like VPC design, subnetting, routing, and cost management.  
+This project helped me get more comfortable with:
+- Splitting CIDR ranges across subnets and AZs  
+- Understanding the difference between Internet Gateways and NAT Gateways  
+- Setting up route tables for isolated vs. internet-facing resources  
+- Cleaning up resources (especially NAT) to avoid unnecessary AWS charges  
+
+---
+
+## Architecture Diagram
 
 ![VPC Architecture](./vpc-project-screenshot.PNG)
 
 ---
 
-## 📚 What I Learned
+## Context
 
-- How to **plan CIDR blocks** across subnets and AZs.  
-- Proper configuration of **route tables for public vs. private subnets**.  
-- The difference between **IGW and NAT Gateway**.  
-- Why cleanup (deleting NAT/EIP) is critical to **avoid unnecessary AWS costs**.  
-- Reinforced practical knowledge for the AWS Solutions Architect Associate exam.
+This project is part of my **AWS Cloud portfolio** — small, focused projects to document my learning and show that I’m working with real environments, not just theory.
 
----
-
-## 🚀 Context
-
-This project is part of my **AWS Cloud portfolio**: a series of small, real-world projects built while preparing for the Solutions Architect Associate certification.
-
-I deleted the environment after testing to **avoid extra AWS charges**, keeping the focus on learning and documentation.
+I deleted everything after testing to avoid charges, but the design and process remain documented here.
 
 Follow my AWS journey on [LinkedIn](https://www.linkedin.com/in/ciro-riccio-a1a933197/).
